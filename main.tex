@@ -15,60 +15,76 @@ If 4-digit numbers greater than 5,000 are randomly formed from the digits 0, 1, 
 \end{enumerate}
 
 \solution
+Let $X$ be a random variable such that 
+\begin{align}
+	X = \begin{cases}
+		0 &  n<5000\\
+		1 &  n>5000\end{cases}
+\end{align}
+
+Let $Y$ be a random variable such that:
+\begin{align}
+	Y = \begin{cases}
+		0 & n \not\equiv 0 \pmod{5}\\
+		1 & n \equiv 0 \pmod{5}\end{cases}
+\end{align}
+
+We need to find \pr{Y \mid X} in each case. \\
+
+\begin{align}
+	\pr{X \mid Y}=\frac{\pr{XY} }{\pr{X}}
+\end{align}
 
 Let's solve each part separately:
 
 \textbf{(i) Digits are Repeated}\\
-Let number of favourable outcomes be N(A) and total outcomes be N(T). \\
-For the number to be greater than  5000, the 1000s digit must be 5 or 7 and there is no constraint on the other digits. And we must exclude the case '5000'.\\
-Hence,
+
+For n to be greater than 5000, first digit must be 5 or 7. We must exclude the case '5000'. Hence,
 \begin{align}
-	N(T)= (2 \times 5 \times 5 \times 5)-1=249
+	\pr{X=1} &=\frac{249}{3125}
 \end{align}
 
-For the number to be divisible by 5, the last digit must be either 0 or 5.  Here also we must exclude the case '5000'\\
+For n to be greater than 5000 and also divisble by 5:
+\begin{enumerate}
+\item first digit must be 5 or 7.
+\item last digit must be 5 or 0.
+\end{enumerate}
 Hence,
 
 \begin{align}
-	N(A)= (2 \times 5 \times 5 \times 2)-1=99
+	\pr{XY=1} &=\frac{99}{3125}
 \end{align}
 
-The probability of forming a number divisible by 5 when digits are repeated is:
+With this information we can find the required answer,
 \begin{align}
-P(\text{divisible by 5}) = \frac{\text{N(A)}}{\text{N(T)}} = \frac{99}{249} = \frac{33}{83}.
+	\pr{X \mid Y=1}=\frac{\pr{XY=1} }{\pr{X=1}}\\
+	\pr{X \mid Y=1}=\frac{99}{249}\\	
+	\implies \pr{X \mid Y=1}=\frac{33}{83}	
 \end{align}
 
 
 \textbf{(ii) No Repetition of Digits}\\
-Let number of favourable outcomes be N(B) and total outcomes be N(T). \\
-Hence,
+For n to be greater than 5000, first digit must be 5 or 7. Hence,
 \begin{align}
-	N(T)= 2 \times 4 \times 3 \times 2=48
+	\pr{X=1} &=\frac{48}{120}
 \end{align}
 
-For the number to be divisible by 5, the last digit must be either 0 or 5. \\
-The favourable cases are:
+The cases for n to be greater than 5000 and also divisble by 5:
 \begin{enumerate}
-\item If the 4-digit number starts with 5, the last digit must be 0.
-	\begin{align}
-		N_{1}= 1 \times 3 \times 2 \times 1=6
-	\end{align}
-\item if the 4-digit number starts with 7, the last digit can be 0 or 5
-	\begin{align}
-		N_{2}= 1 \times 3 \times 2 \times 2=12
-	\end{align}
-	
+\item first digit must be 5 and last digit must be 0.
+\item first digit must be 7 and last digit must be 5 or 0.
 \end{enumerate}
-
-The total number of favourable cases N(A) will be:
-	\begin{align}
-		N(B)=N_{1}+N_{2}= 18
-	\end{align}
-	
-The probability of forming a number divisible by 5 when digits are not repeated is:
+Hence,
 
 \begin{align}
-P(\text{divisible by 5}) = \frac{\text{N(A)}}{\text{N(T)}} = \frac{18}{48} = \frac{3}{8}.
+	\pr{XY=1} &=\frac{18}{120}
+\end{align}
+
+With this information we can find the required answer,
+\begin{align}
+	\pr{X \mid Y=1}=\frac{\pr{XY=1} }{\pr{X=1}}\\
+	\pr{X \mid Y=1}=\frac{18}{48}\\	
+	\implies \pr{X \mid Y=1}=\frac{3}{8}	
 \end{align}
 
 \end{document}
