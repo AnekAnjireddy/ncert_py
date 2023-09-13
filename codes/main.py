@@ -15,11 +15,11 @@ possible_numbers_1 = [number for number in possible_numbers_1 if int(''.join(map
 # Filter numbers greater than 5000 for no repetition case
 possible_numbers_2 = [number for number in possible_numbers_2 if int(''.join(map(str, number))) > 5000]
 
-# Calculate the total number of possibilities
-total_possibilities = len(possible_numbers_1)
+# Calculate the total number of possibilities for repetition case
+total_possibilities_1 = len(possible_numbers_1)
 
-# Calculate the total number of possibilities
-total_possibilities = len(possible_numbers_2)
+# Calculate the total number of possibilities for non repetition case
+total_possibilities_2 = len(possible_numbers_2)
 
 # Function to check if a number is divisible by 5
 def is_divisible_by_5(number):
@@ -32,10 +32,9 @@ count_divisible_1 = sum(1 for number in possible_numbers_1 if is_divisible_by_5(
 count_divisible_2 = sum(1 for number in possible_numbers_2 if is_divisible_by_5(int(''.join(map(str, number)))))
 
 # Calculate the probability
-probability_repeated = count_divisible_1 / total_possibilities
-probability_not_repeated = count_divisible_2 / total_possibilities
+probability_repeated = count_divisible_1 / total_possibilities_1
+probability_not_repeated = count_divisible_2 / total_possibilities_2
 
 print("Probability with repeated digits and greater than 5000:", probability_repeated)
 print("Probability without repeated digits and greater than 5000:", probability_not_repeated)
-
 
